@@ -1,0 +1,25 @@
+{
+  "name": "react-native-wistory",
+  "version": "1.0.0",
+  "description": "Wistory",
+  "main": "build/index.js",
+  "scripts": {
+    "prepare": "rm -rf build && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/volga-volga/react-native-wistory",
+  "keywords": ["react-native", "wistory", "stories", "ui"],
+  "author": "Volga Volga",
+  "license": "CC BY 4.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3",
+    "@types/react": "*",
+    "@types/react-native": "*"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
+}
