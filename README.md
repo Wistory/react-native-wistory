@@ -4,7 +4,7 @@
 
 - Install dependency
  
-`yarn add https://github.com/volga-volga/react-native-wistory`
+`yarn add https://github.com/Wistory/react-native-wistory`
 
 - Insert into `Podfile`:
 
