@@ -1,5 +1,7 @@
 # Installation
 
+- Target iOS 11. Update in Podfile (`platform :ios, '11.0'`) and XCode (General -> Deployment Info -> Target) 
+
 - Install dependency
  
 `yarn add https://github.com/volga-volga/react-native-wistory`
@@ -12,13 +14,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 ...
 
-  use_frameworks!
-
   pod 'Wistory', '~> 0.3.0'
 
 ```
 
 - Run `pod install`
+
+- Set Build settings -> Build options -> Enable bitcode to `No` in XCode project
 
 # TODO
 
