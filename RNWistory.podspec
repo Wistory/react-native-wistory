@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.license      = "CC BY 4.0"
     s.author       = { package["author"]["name"] => package["author"]["email"] }
     s.platform     = :ios, "11.0"
-    s.source       = { :git => "https://github.com/volga-volga/react-native-wistory.git", :tag => "master" }
+    s.source       = { :git => "https://github.com/Wistory/react-native-wistory", :tag => "master" }
     s.source_files = "ios/**/*.{h,m,swift}"
 
     s.dependency "React"
