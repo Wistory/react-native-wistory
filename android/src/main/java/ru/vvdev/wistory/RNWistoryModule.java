@@ -1,5 +1,7 @@
 package ru.vvdev.wistory;
 
+import android.app.Application;
+
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Callback;
@@ -13,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nullable;
+import ru.vvdev.wistory.Wistory;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
@@ -27,7 +30,6 @@ public class RNWistoryModule extends ReactContextBaseJavaModule {
 
     RNWistoryModule(ReactApplicationContext context) {
         super(context);
-        reactContext = context;
     }
 
     @Override
