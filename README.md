@@ -1,10 +1,12 @@
-# Installation
-
-- Target iOS 11. Update in Podfile (`platform :ios, '11.0'`) and XCode (General -> Deployment Info -> Target) 
+# Installation 
 
 - Install dependency
  
 `yarn add https://github.com/Wistory/react-native-wistory`
+
+## iOS
+
+- Target iOS 11. Update in Podfile (`platform :ios, '11.0'`) and XCode (General -> Deployment Info -> Target)
 
 - Insert into `Podfile`:
 
@@ -14,18 +16,96 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 ...
 
-  pod 'Wistory', '~> 0.3.0'
+  pod 'Wistory', '~> 0.4.1'
 
 ```
 
 - Run `pod install`
 
+**Note**: after update native Wistory sdk in Podfile use `pod install --repo-update`
+
 - Set Build settings -> Build options -> Enable bitcode to `No` in XCode project
+
+## Android
+
+- `minSdkVersion` for android - 21. Update `android/build.gradle`
+
+- add `maven { url 'https://www.jitpack.io' }` in `android/build.gradle`
+```
+allprojects {
+    repositories {
+        maven { url 'https://www.jitpack.io' }
+```
+
+- insert in `android/app/build.gradle`:
+```
+implementation 'com.github.Wistory:wistorySDK.android:1.1.4'
+```
+
+- update `MainApplication.java`:
+
+```
+import ru.vvdev.wistory.Wistory; // <----
+
+public class MainApplication extends Application implements ReactApplication {
+...
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    Wistory.INSTANCE.initialize(this); // <-----
+    SoLoader.init(this, /* native exopackage */ false);
+    initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+  }
+}
+```
+
+- config sdk in `AndroidManifest.xml`. Insert meta-data inside application tag:
+
+```
+<meta-data
+        android:name="WISTORY_TOKEN"
+        android:value="YOUR_COMPANY_TOKEN" />
+
+<meta-data
+        android:name="WISTORY_SERVER_URL"
+        android:value="YOUR_SERVER_URL" />
+```
+
+# Usage
+
+- import dependency
+
+`import {WistoryView, Wistory} from 'react-native-wistory'`
+- configure ios sdk:
+```
+Wistory.init(
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdkYWFmYjJlOGQwYTdhMjEzMzgxYTIiLCJpYXQiOjE2MDIwNzEyOTF9.soU_yO-k01w6g92X4rXmSkTLidS2SItvqT7KGPswxW8',
+  undefined,
+  'http://178.128.220.160:3001/',
+);
+```
+
+This function do nothing for android.
+
+- render WistoryView:
+```
+function App() {
+  return (
+    <View style={{flex: 1}}>
+      <WistoryView />
+    </View
+  )
+}
+```
 
 # TODO
 
-- [ ] wrap android sdk
+- [ ] fix android redraw
+- [ ] wrap android listener methods
+- [ ] customize android sdk params from javascript
 - [ ] wrap ios delegate methods
+- [ ] publish npm package
 
 # Licence
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]

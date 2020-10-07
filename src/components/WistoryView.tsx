@@ -1,22 +1,17 @@
-import React from 'react';
-import {requireNativeComponent, NativeModules, ViewProps} from 'react-native';
+import React, {useEffect, useMemo, useState} from 'react';
+import {StyleSheet} from 'react-native';
+import {WistoryViewProps} from './WistoryViewProps';
+import {WistoryViewNativeComponent} from './WistoryViewNativeComponent';
 
-const {RNWistory: NativeWistoryModule} = NativeModules;
-
-export interface WistoryViewProps extends ViewProps {}
-
-const WistoryViewNativeComponent = requireNativeComponent<WistoryViewProps>(
-  'WistoryView',
-);
-
-export class WistoryView extends React.Component<WistoryViewProps> {
-  static defaultProps = {};
-
-  public static init(companyToken: string, userToken?: string) {
-    NativeWistoryModule.init(companyToken, userToken);
-  }
-
-  render() {
-    return <WistoryViewNativeComponent {...this.props} />;
-  }
+export function WistoryView(props: WistoryViewProps) {
+  const [height, setHeight] = useState<number | undefined>(0);
+  useEffect(() => {
+    const timer = setTimeout(() => setHeight(100), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  const style = useMemo(() => StyleSheet.flatten([props.style, {height}]), [
+    props.style,
+    height,
+  ]);
+  return <WistoryViewNativeComponent {...props} style={style} />;
 }
