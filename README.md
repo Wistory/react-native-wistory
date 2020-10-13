@@ -6,6 +6,8 @@
 
 ## iOS
 
+**Note**: Framework compiled with Swift 5.3. XCode 12 is required to use sdk.
+
 - Target iOS 11. Update in Podfile (`platform :ios, '11.0'`) and XCode (General -> Deployment Info -> Target)
 
 - Insert into `Podfile`:
@@ -34,12 +36,15 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```
 allprojects {
     repositories {
-        maven { url 'https://www.jitpack.io' }
+        maven {
+          url 'https://www.jitpack.io'
+          credentials { username authToken }
+        }
 ```
 
 - insert in `android/app/build.gradle`:
 ```
-implementation 'com.github.Wistory:wistorySDK.android:1.1.4'
+implementation 'com.gitlab.volga-volga:wistory.android:1.1.4'
 ```
 
 - update `MainApplication.java`:
@@ -79,13 +84,8 @@ public class MainApplication extends Application implements ReactApplication {
 `import {WistoryView, Wistory} from 'react-native-wistory'`
 - configure ios sdk:
 ```
-Wistory.init(
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdkYWFmYjJlOGQwYTdhMjEzMzgxYTIiLCJpYXQiOjE2MDIwNzEyOTF9.soU_yO-k01w6g92X4rXmSkTLidS2SItvqT7KGPswxW8',
-  undefined,
-  'http://178.128.220.160:3001/',
-);
+Wistory.init('COMPANY_TOKEN');
 ```
-
 This function do nothing for android.
 
 - render WistoryView:
@@ -93,7 +93,7 @@ This function do nothing for android.
 function App() {
   return (
     <View style={{flex: 1}}>
-      <WistoryView />
+      <WistoryView style={{flex: 1}}/>
     </View
   )
 }
@@ -101,7 +101,7 @@ function App() {
 
 # TODO
 
-- [ ] fix android redraw
+- [ ] change base url for ios
 - [ ] wrap android listener methods
 - [ ] customize android sdk params from javascript
 - [ ] wrap ios delegate methods
