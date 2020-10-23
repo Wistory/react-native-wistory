@@ -1,4 +1,4 @@
-package ru.vvdev.wistory;
+package ru.vvdev.wistory.rn;
 
 import androidx.annotation.NonNull;
 

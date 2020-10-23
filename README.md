@@ -38,19 +38,18 @@ allprojects {
     repositories {
         maven {
           url 'https://www.jitpack.io'
-          credentials { username authToken }
         }
 ```
 
 - insert in `android/app/build.gradle`:
 ```
-implementation 'com.gitlab.volga-volga:wistory.android:1.1.4'
+implementation 'com.github.Wistory:sdk.android:0.1.0'
 ```
 
 - update `MainApplication.java`:
 
 ```
-import ru.vvdev.wistory.Wistory; // <----
+import ru.vvdev.wistory.rn.WistoryInitializer; // <----
 
 public class MainApplication extends Application implements ReactApplication {
 ...
@@ -58,7 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
-    Wistory.INSTANCE.initialize(this); // <-----
+    WistoryInitializer.initialize(this); // <-----
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
@@ -71,7 +70,11 @@ public class MainApplication extends Application implements ReactApplication {
 <meta-data
         android:name="WISTORY_TOKEN"
         android:value="YOUR_COMPANY_TOKEN" />
+```
 
+- _(optional)_ Specify meta-data to change wistory server url
+
+```
 <meta-data
         android:name="WISTORY_SERVER_URL"
         android:value="YOUR_SERVER_URL" />
@@ -93,7 +96,7 @@ This function do nothing for android.
 function App() {
   return (
     <View style={{flex: 1}}>
-      <WistoryView style={{flex: 1}}/>
+      <WistoryView />
     </View
   )
 }

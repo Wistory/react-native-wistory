@@ -1,4 +1,4 @@
-package ru.vvdev.wistory;
+package ru.vvdev.wistory.rn;
 
 public class RNWistoryConfig {
     static RNWistoryConfig instance = new RNWistoryConfig();

@@ -1,4 +1,4 @@
-package ru.vvdev.wistory;
+package ru.vvdev.wistory.rn;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;

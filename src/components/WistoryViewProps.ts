@@ -1,3 +1,5 @@
-import {ViewProps} from 'react-native';
+import {ViewProps, ViewStyle} from 'react-native';
 
-export interface WistoryViewProps extends ViewProps {}
+export interface WistoryViewProps extends ViewProps {
+  wrapperStyle?: ViewStyle;
+}
