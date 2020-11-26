@@ -6,7 +6,7 @@
 
 ## iOS
 
-**Note**: Framework compiled with Swift 5.3. XCode 12 is required to use sdk.
+**Note**: Framework compiled with Swift 5.3.1. XCode 12.2 is required to use sdk.
 
 - Target iOS 11. Update in Podfile (`platform :ios, '11.0'`) and XCode (General -> Deployment Info -> Target)
 
@@ -18,7 +18,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 ...
 
-  pod 'Wistory', '~> 0.4.1'
+  pod 'Wistory', '~> 0.5.13'
 
 ```
 
@@ -39,11 +39,6 @@ allprojects {
         maven {
           url 'https://www.jitpack.io'
         }
-```
-
-- insert in `android/app/build.gradle`:
-```
-implementation 'com.github.Wistory:sdk.android:0.1.0'
 ```
 
 - update `MainApplication.java`:

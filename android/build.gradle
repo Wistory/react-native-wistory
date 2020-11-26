@@ -31,6 +31,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Wistory:sdk.android:0.1.0'
+    implementation 'com.github.Wistory:sdk.android:1.0.10'
     implementation 'com.facebook.react:react-native:+'
 }

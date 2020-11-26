@@ -3,7 +3,7 @@ import Foundation
 import Wistory
 
 @objc class WistoryViewComponent: UIView {
-    let wistory = Wistory(with: RNWistoryConfig.sharedInstance()?.companyToken ?? "", userToken: RNWistoryConfig.sharedInstance()?.userToken, usageSettings: .embedded)
+    let wistory = Wistory(with: RNWistoryConfig.sharedInstance()?.companyToken ?? "", registrationId: RNWistoryConfig.sharedInstance()?.userToken, usageSettings: .embedded)
             .presentingSettings(style: .popover)
             .storiesViewController;
 
