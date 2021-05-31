@@ -3,26 +3,33 @@ import Foundation
 import Wistory
 
 @objc class WistoryViewComponent: UIView {
-    let wistory = Wistory(with: RNWistoryConfig.sharedInstance()?.companyToken ?? "", registrationId: RNWistoryConfig.sharedInstance()?.userToken, usageSettings: .embedded)
-            .presentingSettings(style: .popover)
-            .storiesViewController;
+    let wistory = Wistory(
+        with: RNWistoryConfig.sharedInstance()?.companyToken ?? "",
+        registrationId: RNWistoryConfig.sharedInstance()?.userToken,
+        usageSettings: .embedded
+    )
+    .presentingSettings(style: .popover)
+    .storiesViewController;
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        if let wistoryController = wistory {
 
-        wistory.view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(wistory.view)
 
-        NSLayoutConstraint.activate([
-            wistory.view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            wistory.view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            wistory.view.topAnchor.constraint(equalTo: topAnchor),
-            wistory.view.bottomAnchor.constraint(equalTo: bottomAnchor),
-            wistory.view.heightAnchor.constraint(equalToConstant: 118)
-        ])
+            wistoryController.view.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(wistoryController.view)
 
-        let controller = RNWistoryConfig.sharedInstance()?.reactViewController
-        wistory.didMove(toParent: controller)
+            NSLayoutConstraint.activate([
+                wistoryController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+                wistoryController.view.trailingAnchor.constraint(equalTo: trailingAnchor),
+                wistoryController.view.topAnchor.constraint(equalTo: topAnchor),
+                wistoryController.view.bottomAnchor.constraint(equalTo: bottomAnchor),
+                wistoryController.view.heightAnchor.constraint(equalToConstant: 118)
+            ])
+
+            let controller = RNWistoryConfig.sharedInstance()?.reactViewController
+            wistoryController.didMove(toParent: controller)
+        }
     }
 
 

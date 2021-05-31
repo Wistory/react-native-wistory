@@ -6,7 +6,7 @@
 
 ## iOS
 
-**Note**: Framework compiled with Swift 5.3.1. XCode 12.2 is required to use sdk.
+**Note**: XCode 12.5 is required to use sdk.
 
 - Target iOS 11. Update in Podfile (`platform :ios, '11.0'`) and XCode (General -> Deployment Info -> Target)
 
@@ -18,7 +18,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 ...
 
-  pod 'Wistory', '~> 0.5.13'
+  pod 'Wistory', '~> 0.5.22'
 
 ```
 
