@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo} from 'react';
-import {StyleSheet, View, NativeEventEmitter, NativeModules} from 'react-native';
+import {StyleSheet, View, NativeEventEmitter, NativeModules, Platform} from 'react-native';
 import {WistoryViewProps} from './WistoryViewProps';
 import {WistoryViewNativeComponent} from './WistoryViewNativeComponent';
 
@@ -22,7 +22,10 @@ export function WistoryView(props: WistoryViewProps) {
     [props.wrapperStyle],
   );
   useEffect(() => {
-    const subscription = emitter.addListener('onEvent', props.onEvent);
+    const subscription = emitter.addListener('onEvent', (args: any) => {
+      const data = Platform.OS === 'ios' ? args[0] : args;
+      props.onEvent(data);
+    });
     return subscription.remove;
   }, [props.onEvent]);
   return (

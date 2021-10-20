@@ -48,8 +48,8 @@ public class RNWistoryModule extends ReactContextBaseJavaModule {
 
     public void onEvent(String event, String option) {
         WritableMap json = Arguments.createMap();
-        json.putString("event", event);
-        json.putString("option", option);
+        json.putString("action", event);
+        json.putString("value", option);
         emitDeviceEvent("onEvent", json);
     }
 }
