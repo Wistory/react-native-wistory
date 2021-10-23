@@ -23,7 +23,7 @@ export function WistoryView(props: WistoryViewProps) {
   );
   useEffect(() => {
     const subscription = emitter.addListener('onEvent', (args: any) => {
-      const data = Platform.OS === 'ios' ? args[0] : args;
+      const data = args;
       props.onEvent(data);
     });
     return subscription.remove;

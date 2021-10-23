@@ -1,6 +1,6 @@
 {
   "name": "react-native-wistory",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Wistory",
   "main": "build/index.js",
   "scripts": {
