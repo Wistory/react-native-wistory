@@ -3,6 +3,14 @@ import Foundation
 import Wistory
 
 @objc class WistoryViewComponent: UIView, RootViewDelegate {
+    func onRead(story: SnapModel, isVolume: Bool?) {
+        
+    }
+    
+    func dismissed() {
+        
+    }
+    
     let wistory = Wistory(
         with: RNWistoryConfig.sharedInstance()?.companyToken ?? "",
         registrationId: RNWistoryConfig.sharedInstance()?.userToken,
@@ -80,4 +88,3 @@ import Wistory
 
     }
 }
-
