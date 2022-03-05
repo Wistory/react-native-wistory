@@ -26,7 +26,7 @@ export function WistoryView(props: WistoryViewProps) {
       const data = args;
       props.onEvent(data);
     });
-    return subscription.remove;
+    return () => subscription.remove();
   }, [props.onEvent]);
   return (
     <View style={wrapperStyle}>
