@@ -4,14 +4,14 @@ import Wistory
 
 @objc class WistoryViewComponent: UIView, RootViewDelegate {
     func onRead(story: SnapModel, isVolume: Bool?) {
-        
+
     }
-    
+
     func dismissed() {
-        
+
     }
-    
-    let wistory = Wistory(
+
+    let wistory = WistoryBuilder(
         with: RNWistoryConfig.sharedInstance()?.companyToken ?? "",
         registrationId: RNWistoryConfig.sharedInstance()?.userToken,
         usageSettings: .embedded,
